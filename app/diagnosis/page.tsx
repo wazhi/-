@@ -1,0 +1,4 @@
+"use client";
+import { useState } from 'react';import { students } from '@/lib/data';import { diagnoseWeakKnowledge, generateDiagnosisText } from '@/lib/algorithms';import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+export default function Diagnosis(){const [id,setId]=useState(students[0].id);const diag=diagnoseWeakKnowledge(id);
+return <div className='space-y-4'><div className='card'><h1 className='text-xl font-bold'>学习诊断</h1><select value={id} onChange={e=>setId(e.target.value)} className='border p-2'>{students.map(s=><option key={s.id} value={s.id}>{s.name}</option>)}</select><p className='mt-2 text-sm'>{generateDiagnosisText(id)}</p></div><div className='card h-72'><ResponsiveContainer><BarChart data={diag}><XAxis dataKey='knowledgeName' hide/><YAxis/><Bar dataKey='mastery' fill='#3b82f6'/></BarChart></ResponsiveContainer></div></div>}
