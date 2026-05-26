@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<div class='card'><h3>知识点平均掌握度</h3><canvas id='c'></canvas><p>可观察到深度学习相关知识点整体偏低。</p></div><script>const d={{rows|tojson}};new Chart(document.getElementById('c'),{type:'bar',data:{labels:d.map(x=>x.name),datasets:[{label:'平均掌握度',data:d.map(x=>x.avg)}]}})</script>{% endblock %}

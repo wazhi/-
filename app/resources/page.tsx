@@ -1,0 +1,4 @@
+"use client";
+import { recommendResources } from '@/lib/algorithms';import { knowledgePoints, students } from '@/lib/data';import { useState } from 'react';
+export default function Res(){const [sid,setSid]=useState(students[0].id);const [kid,setKid]=useState(knowledgePoints[0].id);const rs=recommendResources(sid,kid);
+return <div className='space-y-4'><div className='card'><h1 className='text-xl font-bold'>学习资源推荐</h1><div className='flex gap-2'><select className='border p-2' value={sid} onChange={e=>setSid(e.target.value)}>{students.map(s=><option key={s.id} value={s.id}>{s.name}</option>)}</select><select className='border p-2' value={kid} onChange={e=>setKid(e.target.value)}>{knowledgePoints.map(k=><option key={k.id} value={k.id}>{k.name}</option>)}</select></div></div>{rs.map(r=><div className='card' key={r.id}><b>{r.title}</b><p>{r.type} | 难度{r.difficulty} | {r.duration}</p></div>)}</div>}
