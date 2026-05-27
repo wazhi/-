@@ -1,0 +1,1 @@
+This paper studies battery capacity degradation across cycle trajectories and predicts SOH/RUL with an LSTM model. We use capacity and cycle features, optimize MAE and RMSE, and report robust performance under domain shift.
